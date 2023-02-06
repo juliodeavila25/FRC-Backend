@@ -5,6 +5,8 @@ import conectarDB from "./config/db.js";
 import usuarioRoutes from "./routes/usuarioRoutes.js";
 import proyectoRoutes from "./routes/proyectoRoutes.js";
 import tareaRoutes from "./routes/tareaRoutes.js";
+import curriculumRoutes from "./routes/curriculumRoutes.js";
+import ofertasRoutes from "./routes/ofertasRoutes.js";
 
 const app = express();
 app.use(express.json());
@@ -36,6 +38,8 @@ app.use(cors(corsOptions));
 app.use("/api/usuarios", usuarioRoutes);
 app.use("/api/proyectos", proyectoRoutes);
 app.use("/api/tareas", tareaRoutes);
+app.use("/api/curriculum", curriculumRoutes);
+app.use("/api/ofertas", ofertasRoutes);
 const PORT = process.env.PORT || 4000;
 
 app.listen(4000, () => {
