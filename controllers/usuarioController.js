@@ -16,6 +16,7 @@ const registrar = async (req, res) => {
 
   try {
     const usuario = new Usuario(req.body);
+    usuario.userType = ["aspirante"];
     usuario.token = generarId();
     await usuario.save();
 
@@ -55,6 +56,7 @@ const autenticar = async (req, res) => {
       _id: usuario._id,
       nombre: usuario.nombre,
       email: usuario.email,
+      userType: usuario.userType,
       token: generarJWT(usuario._id),
     });
   } else {

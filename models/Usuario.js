@@ -3,6 +3,13 @@ import bcrypt from "bcrypt";
 
 const usuarioSchema = mongoose.Schema(
   {
+    userType: [
+      {
+        type: String,
+        required: true,
+        trim: true,
+      },
+    ],
     nombre: {
       type: String,
       required: true,
