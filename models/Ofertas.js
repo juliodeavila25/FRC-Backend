@@ -43,8 +43,9 @@ const ofertasSchema = mongoose.Schema(
       required: true,
     },
     estado: {
-      type: Boolean,
-      default: true,
+      type: String,
+      trim: true,
+      default: "activo",
     },
     creador: {
       type: mongoose.Schema.Types.ObjectId,
