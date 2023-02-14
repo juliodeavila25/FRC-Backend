@@ -71,6 +71,94 @@ const curriculumSchema = mongoose.Schema(
       trim: true,
       required: true,
     },
+    nivel: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    titulo: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    anioTitulo: {
+      type: Number,
+      trim: true,
+      required: true,
+    },
+    institucionTitulo: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    empresaExp: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    fechaInicioExp: {
+      type: Date,
+      default: Date.now(),
+    },
+    fechaFinExp: {
+      type: Date,
+      default: Date.now(),
+    },
+    nombreRefA: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    telefonoRefA: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    correoRefA: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    nombreRefB: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    telefonoRefB: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    correoRefB: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    eps: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    pension: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    tipoCuenta: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    entidadBancaria: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    numeroCuenta: {
+      type: String,
+      trim: true,
+      required: true,
+    },
     estado: {
       type: Boolean,
       default: false,
