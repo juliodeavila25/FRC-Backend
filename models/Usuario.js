@@ -10,6 +10,16 @@ const usuarioSchema = mongoose.Schema(
         trim: true,
       },
     ],
+    tipoDocumento: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    documento: {
+      type: String,
+      trim: true,
+      required: true,
+    },
     nombre: {
       type: String,
       required: true,
