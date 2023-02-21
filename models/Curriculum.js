@@ -104,6 +104,10 @@ const curriculumSchema = mongoose.Schema(
       type: Date,
       default: Date.now(),
     },
+    soporteExp: {
+      type: String,
+      required: true,
+    },
     nombreRefA: {
       type: String,
       trim: true,
@@ -119,6 +123,7 @@ const curriculumSchema = mongoose.Schema(
       trim: true,
       required: true,
     },
+
     nombreRefB: {
       type: String,
       trim: true,
@@ -139,9 +144,17 @@ const curriculumSchema = mongoose.Schema(
       trim: true,
       required: true,
     },
+    soporteEps: {
+      type: String,
+      required: true,
+    },
     pension: {
       type: String,
       trim: true,
+      required: true,
+    },
+    soportePension: {
+      type: String,
       required: true,
     },
     tipoCuenta: {

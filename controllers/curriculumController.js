@@ -4,11 +4,18 @@ const nuevoCurriculum = async (req, res) => {
   const curriculum = new Curriculum(req.body);
   curriculum.creador = req.usuario._id;
   curriculum.estado = true;
+
+  if (req.files) {
+    curriculum.soporteExp = req.files.soporteExp[0].filename;
+    curriculum.soporteEps = req.files.soporteEps[0].filename;
+    curriculum.soportePension = req.files.soportePension[0].filename;
+  }
+
   try {
     const curriculumAlmacenado = await curriculum.save();
     res.json(curriculumAlmacenado);
   } catch (error) {
-    console.log(erorr);
+    console.log(error);
   }
 };
 
@@ -35,9 +42,9 @@ const obtenerCurriculum = async (req, res) => {
 
 const editarCurriculum = async (req, res) => {
   const { id } = req.params;
-  console.log(req.body);
+
   const curriculum = await Curriculum.find().where("creador").equals(id);
-  console.log(curriculum);
+
   if (!curriculum) {
     const error = new Error("No Encontrado");
     return res.status(404).json({ msg: error.message });
@@ -71,24 +78,40 @@ const editarCurriculum = async (req, res) => {
   curriculum[0].nivel = req.body.nivel || curriculum[0].nivel;
   curriculum[0].titulo = req.body.titulo || curriculum[0].titulo;
   curriculum[0].anioTitulo = req.body.anioTitulo || curriculum[0].anioTitulo;
-  curriculum[0].institucionTitulo = req.body.institucionTitulo || curriculum[0].institucionTitulo;
+  curriculum[0].institucionTitulo =
+    req.body.institucionTitulo || curriculum[0].institucionTitulo;
   curriculum[0].empresaExp = req.body.empresaExp || curriculum[0].empresaExp;
-  curriculum[0].fechaInicioExp = req.body.fechaInicioExp || curriculum[0].fechaInicioExp;
+  curriculum[0].fechaInicioExp =
+    req.body.fechaInicioExp || curriculum[0].fechaInicioExp;
   curriculum[0].fechaFinExp = req.body.fechaFinExp || curriculum[0].fechaFinExp;
   curriculum[0].nombreRefA = req.body.nombreRefA || curriculum[0].nombreRefA;
-  curriculum[0].telefonoRefA = req.body.telefonoRefA || curriculum[0].telefonoRefA;
+  curriculum[0].telefonoRefA =
+    req.body.telefonoRefA || curriculum[0].telefonoRefA;
   curriculum[0].correoRefA = req.body.correoRefA || curriculum[0].correoRefA;
   curriculum[0].nombreRefB = req.body.nombreRefB || curriculum[0].nombreRefB;
-  curriculum[0].telefonoRefB = req.body.telefonoRefB || curriculum[0].telefonoRefB;
+  curriculum[0].telefonoRefB =
+    req.body.telefonoRefB || curriculum[0].telefonoRefB;
   curriculum[0].correoRefB = req.body.correoRefB || curriculum[0].correoRefB;
   curriculum[0].eps = req.body.eps || curriculum[0].eps;
   curriculum[0].pension = req.body.pension || curriculum[0].pension;
   curriculum[0].tipoCuenta = req.body.tipoCuenta || curriculum[0].tipoCuenta;
-  curriculum[0].entidadBancaria = req.body.entidadBancaria || curriculum[0].entidadBancaria;
-  curriculum[0].numeroCuenta = req.body.numeroCuenta || curriculum[0].numeroCuenta;
+  curriculum[0].entidadBancaria =
+    req.body.entidadBancaria || curriculum[0].entidadBancaria;
+  curriculum[0].numeroCuenta =
+    req.body.numeroCuenta || curriculum[0].numeroCuenta;
+  curriculum[0].soporteExp =
+    (req.files.soporteExp && req.files.soporteExp[0].path) ||
+    curriculum[0].soporteExp;
+  curriculum[0].soporteEps =
+    (req.files.soporteEps && req.files.soporteEps[0].path) ||
+    curriculum[0].soporteEps;
+  curriculum[0].soportePension =
+    (req.files.soportePension && req.files.soportePension[0]?.path) ||
+    curriculum[0].soportePension;
 
   try {
     const curriculumAlmacenado = await curriculum[0].save();
+
     res.json(curriculumAlmacenado);
   } catch (error) {
     console.log(error);

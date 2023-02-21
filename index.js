@@ -15,15 +15,17 @@ dotenv.config();
 conectarDB();
 
 //Ruta de imagenes
-app.use(express.static("./images"));
+app.use(express.static("./public/uploads"));
 
 //Configurar CORS
-const whitelist = [process.env.FRONTEND_URL];
+const whitelist = [process.env.FRONTEND_URL, "http://localhost:4000"];
 
 const corsOptions = {
   origin: function (origin, callback) {
+    console.log("Origen", origin);
     if (whitelist.includes(origin)) {
       //Puede consultar la api
+      console.log("Entrar");
       callback(null, true);
     } else {
       //No está permitido
@@ -32,7 +34,7 @@ const corsOptions = {
   },
 };
 
-app.use(cors(corsOptions));
+app.use(cors("*"));
 
 //Routing
 app.use("/api/usuarios", usuarioRoutes);
