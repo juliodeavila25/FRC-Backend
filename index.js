@@ -8,6 +8,7 @@ import tareaRoutes from "./routes/tareaRoutes.js";
 import curriculumRoutes from "./routes/curriculumRoutes.js";
 import ofertasRoutes from "./routes/ofertasRoutes.js";
 import documentosRoutes from "./routes/documentosRoutes.js";
+import nominasRoutes from "./routes/nominasRoutes.js";
 const app = express();
 app.use(express.json());
 dotenv.config();
@@ -43,6 +44,7 @@ app.use("/api/tareas", tareaRoutes);
 app.use("/api/curriculum", curriculumRoutes);
 app.use("/api/ofertas", ofertasRoutes);
 app.use("/api/documentos", documentosRoutes);
+app.use("/api/nominas", nominasRoutes);
 const PORT = process.env.PORT || 4000;
 
 app.listen(4000, () => {
