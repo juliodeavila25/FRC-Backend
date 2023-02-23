@@ -71,6 +71,21 @@ const curriculumSchema = mongoose.Schema(
       trim: true,
       required: true,
     },
+    tipoContrato: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    fechaIngreso: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    fechaFin: {
+      type: String,
+      trim: true,
+      required: true,
+    },
     nivel: {
       type: String,
       trim: true,
@@ -123,7 +138,6 @@ const curriculumSchema = mongoose.Schema(
       trim: true,
       required: true,
     },
-
     nombreRefB: {
       type: String,
       trim: true,
