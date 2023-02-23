@@ -176,6 +176,13 @@ const curriculumSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    inputFinanciera: [
+      {
+        type: {},
+        required: true,
+        trim: true,
+      },
+    ],
     creador: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Usuario",

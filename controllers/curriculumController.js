@@ -5,6 +5,16 @@ const nuevoCurriculum = async (req, res) => {
   curriculum.creador = req.usuario._id;
   curriculum.estado = true;
 
+  let arrayInputFinanciera = [];
+  if (typeof req.body.inputFinanciera === "string") {
+    arrayInputFinanciera = JSON.parse(req.body.inputFinanciera);
+  } else {
+    for (let i = 0; i < [req.body.inputFinanciera.length]; i++) {
+      arrayInputFinanciera.push(JSON.parse(req.body.inputFinanciera[i]));
+    }
+  }
+  curriculum.inputFinanciera = arrayInputFinanciera;
+
   if (req.files) {
     curriculum.soporteExp = req.files.soporteExp[0].filename;
     curriculum.soporteEps = req.files.soporteEps[0].filename;
@@ -53,6 +63,16 @@ const editarCurriculum = async (req, res) => {
   if (curriculum[0].creador.toString() !== req.usuario._id.toString()) {
     const error = new Error("Acción no válida");
     return res.status(401).json({ msg: error.message });
+  }
+
+  let arrayInputFinanciera = [];
+
+  if (typeof req.body.inputFinanciera === "string") {
+    arrayInputFinanciera = JSON.parse(req.body.inputFinanciera);
+  } else {
+    for (let i = 0; i < [req.body.inputFinanciera.length]; i++) {
+      arrayInputFinanciera.push(JSON.parse(req.body.inputFinanciera[i]));
+    }
   }
 
   curriculum[0].nombre = req.body.nombre || curriculum[0].nombre;
@@ -108,6 +128,8 @@ const editarCurriculum = async (req, res) => {
   curriculum[0].soportePension =
     (req.files.soportePension && req.files.soportePension[0]?.path) ||
     curriculum[0].soportePension;
+  curriculum[0].inputFinanciera =
+    arrayInputFinanciera || curriculum[0].inputFinanciera;
 
   try {
     const curriculumAlmacenado = await curriculum[0].save();
