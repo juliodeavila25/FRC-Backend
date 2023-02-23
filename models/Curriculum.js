@@ -197,6 +197,7 @@ const curriculumSchema = mongoose.Schema(
         trim: true,
       },
     ],
+
     creador: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Usuario",
