@@ -63,7 +63,7 @@ const curriculumSchema = mongoose.Schema(
     },
     numeroHijos: {
       type: Number,
-      trim: true,
+      trim: false,
       required: true,
     },
     tipoSangre: {
@@ -74,17 +74,46 @@ const curriculumSchema = mongoose.Schema(
     tipoContrato: {
       type: String,
       trim: true,
-      required: true,
+      required: false,
     },
     fechaIngreso: {
       type: String,
       trim: true,
-      required: true,
+      required: false,
     },
     fechaFin: {
       type: String,
       trim: true,
-      required: true,
+      required: false,
+    },
+    empresa: {
+      type: String,
+      trim: true,
+      required: false,
+    },
+    nomina: {
+      type: String,
+      trim: true,
+      required: false,
+    },
+    codigoIngreso: {
+      type: Number,
+      trim: true,
+      required: false,
+    },
+    sueldo: {
+      type: Number,
+      trim: true,
+      required: false,
+    },
+    soporteContrato: {
+      type: String,
+      required: false,
+    },
+    cargo: {
+      type: String,
+      trim: true,
+      required: false,
     },
     nivel: {
       type: String,
@@ -121,7 +150,7 @@ const curriculumSchema = mongoose.Schema(
     },
     soporteExp: {
       type: String,
-      required: true,
+      required: false,
     },
     nombreRefA: {
       type: String,
@@ -141,50 +170,50 @@ const curriculumSchema = mongoose.Schema(
     nombreRefB: {
       type: String,
       trim: true,
-      required: true,
+      required: false,
     },
     telefonoRefB: {
       type: String,
       trim: true,
-      required: true,
+      required: false,
     },
     correoRefB: {
       type: String,
       trim: true,
-      required: true,
+      required: false,
     },
     eps: {
       type: String,
       trim: true,
-      required: true,
+      required: false,
     },
     soporteEps: {
       type: String,
-      required: true,
+      required: false,
     },
     pension: {
       type: String,
       trim: true,
-      required: true,
+      required: false,
     },
     soportePension: {
       type: String,
-      required: true,
+      required: false,
     },
     tipoCuenta: {
       type: String,
       trim: true,
-      required: true,
+      required: false,
     },
     entidadBancaria: {
       type: String,
       trim: true,
-      required: true,
+      required: false,
     },
     numeroCuenta: {
       type: String,
       trim: true,
-      required: true,
+      required: false,
     },
     estado: {
       type: Boolean,
@@ -193,111 +222,111 @@ const curriculumSchema = mongoose.Schema(
     inputFinanciera: [
       {
         type: {},
-        required: true,
+        required: false,
         trim: true,
       },
     ],
     rut: {
       type: String,
-      required: true,
+      required: false,
     },
     numeroRut: {
       type: String,
       trim: true,
-      required: true,
+      required: false,
     },
     fechaCorte: {
       type: String,
       trim: true,
-      required: true,
+      required: false,
     },
     ingresosAnuales: {
       type: Number,
-      trim: true,
-      required: true,
+      //trim: true,
+      required: false,
     },
     egresosAnuales: {
       type: Number,
-      trim: true,
-      required: true,
+      //trim: true,
+      required: false,
     },
     otrosIngresos: {
       type: Number,
-      trim: true,
-      required: true,
+      //trim: true,
+      required: false,
     },
     patrimonio: {
       type: Number,
-      trim: true,
-      required: true,
+      //trim: true,
+      required: false,
     },
     activos: {
       type: Number,
-      trim: true,
-      required: true,
+      //trim: true,
+      required: false,
     },
     pasivos: {
       type: Number,
-      trim: true,
-      required: true,
+      //trim: true,
+      required: false,
     },
     descripcionIngresos: {
       type: String,
-      trim: true,
-      required: true,
+     // trim: true,
+      required: false,
     },
     poseeCuenta: {
       type: String,
-      trim: true,
-      required: true,
+      //trim: true,
+      required: false,
     },
     inputCuentas: [
       {
         type: {},
         required: false,
-        trim: true,
+        //trim: true,
       },
     ],
     operacionesExtranjera: {
       type: String,
-      trim: true,
-      required: true,
+      //trim: true,
+      required: false,
     },
     exportaciones: {
       type: String,
-      trim: true,
+      //trim: true,
       required: false,
     },
     transferencias: {
       type: String,
-      trim: true,
+      //trim: true,
       required: false,
     },
     pagoServicios: {
       type: String,
-      trim: true,
+      //trim: true,
       required: false,
     },
     importaciones: {
       type: String,
-      trim: true,
+      //trim: true,
       required: false,
     },
     prestamos: {
       type: String,
-      trim: true,
+      //trim: true,
       required: false,
     },
     otras: {
       type: String,
-      trim: true,
+      //trim: true,
       required: false,
     },
     inputExtranjera: [
       {
         type: {},
         required: false,
-        trim: true,
+        //trim: true,
       },
     ],
     creador: {

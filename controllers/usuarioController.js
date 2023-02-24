@@ -1,4 +1,5 @@
 import Usuario from "../models/Usuario.js";
+import Curriculum from "../models/Curriculum.js";
 import generarId from "../helpers/generarId.js";
 import generarJWT from "../helpers/generarJWT.js";
 import { emailRegistro, emailOlvidePassword } from "../helpers/emails.js";
@@ -29,6 +30,27 @@ const registrar = async (req, res) => {
     res.json({
       msg: "Usuario creado correctamente, Revisa tu correo electrónico para confirmar tu cuenta.",
     });
+    //console.log(usuario._id);
+    //Comprobar si el document existe en curriculum
+  
+    const curriculum = await Curriculum.findOne({ numeroDocumento: usuario.documento });
+  if (curriculum) {
+    //curriculum.creador = usuario._id || usuario._id;
+    try {
+      const filter = { numeroDocumento: usuario.documento };
+      const update = { creador: usuario._id };
+      const curriculumAlmacenado = await Curriculum.findOneAndUpdate(filter, update);
+      console.log("1",curriculumAlmacenado);
+      //res.json(curriculumAlmacenado);
+      //console.log("2",curriculumAlmacenado);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  else{
+    const error = new Error("El usuario es nuevo");
+  }
+
   } catch (error) {
     console.log(error);
   }

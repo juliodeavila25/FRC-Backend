@@ -12,7 +12,7 @@ import express from "express";
 const router = express.Router();
 
 router.route("/").get(checkAuth, obtenerNominas).post(checkAuth, nuevaNomina);
-router.route("/obtener").get(checkAuth, obtenerNominasbyPeriodo);
+router.route("/obtener/:id").get(checkAuth, obtenerNominasbyPeriodo);
 
 router.route("/:id").get(checkAuth, obtenerNomina).put(checkAuth, editarNomina);
 
