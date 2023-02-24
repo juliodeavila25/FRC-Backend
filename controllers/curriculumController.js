@@ -26,6 +26,7 @@ const nuevoCurriculum = async (req, res) => {
   curriculum.inputCuentas = arrayInputCuenta;
   //Cuentas Extranjeras
   let arrayInputExtranjera = [];
+
   if (typeof req.body.inputExtranjera === "string") {
     arrayInputExtranjera = JSON.parse(req.body.inputExtranjera);
   } else {
@@ -34,7 +35,6 @@ const nuevoCurriculum = async (req, res) => {
     }
   }
   curriculum.inputExtranjera = arrayInputExtranjera;
-
 
   if (req.files) {
     curriculum.soporteExp = req.files.soporteExp[0].filename;
@@ -174,48 +174,37 @@ const editarCurriculum = async (req, res) => {
     arrayInputFinanciera || curriculum[0].inputFinanciera;
   //Financiera
   curriculum[0].rut =
-    (req.files.rut && req.files.rut[0].filename) ||
-    curriculum[0].rut;
-    curriculum[0].numeroRut =
-    req.body.numeroRut || curriculum[0].numeroRut;
-    curriculum[0].fechaCorte =
-    req.body.fechaCorte || curriculum[0].fechaCorte;
-    curriculum[0].ingresosAnuales =
+    (req.files.rut && req.files.rut[0].filename) || curriculum[0].rut;
+  curriculum[0].numeroRut = req.body.numeroRut || curriculum[0].numeroRut;
+  curriculum[0].fechaCorte = req.body.fechaCorte || curriculum[0].fechaCorte;
+  curriculum[0].ingresosAnuales =
     req.body.ingresosAnuales || curriculum[0].ingresosAnuales;
-    curriculum[0].egresosAnuales =
+  curriculum[0].egresosAnuales =
     req.body.egresosAnuales || curriculum[0].egresosAnuales;
-    curriculum[0].otrosIngresos =
+  curriculum[0].otrosIngresos =
     req.body.otrosIngresos || curriculum[0].otrosIngresos;
-    curriculum[0].patrimonio =
-    req.body.patrimonio || curriculum[0].patrimonio;
-    curriculum[0].activos =
-    req.body.activos || curriculum[0].activos;
-    curriculum[0].pasivos =
-    req.body.pasivos || curriculum[0].pasivos;
-    curriculum[0].descripcionIngresos =
+  curriculum[0].patrimonio = req.body.patrimonio || curriculum[0].patrimonio;
+  curriculum[0].activos = req.body.activos || curriculum[0].activos;
+  curriculum[0].pasivos = req.body.pasivos || curriculum[0].pasivos;
+  curriculum[0].descripcionIngresos =
     req.body.descripcionIngresos || curriculum[0].descripcionIngresos;
-    curriculum[0].poseeCuenta =
-    req.body.poseeCuenta || curriculum[0].poseeCuenta;
-    curriculum[0].inputCuentas =
-    arrayInputCuenta || curriculum[0].inputCuentas;
-    curriculum[0].operacionesExtranjera =
+  curriculum[0].poseeCuenta = req.body.poseeCuenta || curriculum[0].poseeCuenta;
+  curriculum[0].inputCuentas = arrayInputCuenta || curriculum[0].inputCuentas;
+  curriculum[0].operacionesExtranjera =
     req.body.operacionesExtranjera || curriculum[0].operacionesExtranjera;
-    curriculum[0].exportaciones =
+  curriculum[0].exportaciones =
     req.body.exportaciones || curriculum[0].exportaciones;
-    curriculum[0].transferencias =
+  curriculum[0].transferencias =
     req.body.transferencias || curriculum[0].transferencias;
-    curriculum[0].pagoServicios =
+  curriculum[0].pagoServicios =
     req.body.pagoServicios || curriculum[0].pagoServicios;
-    curriculum[0].importaciones =
+  curriculum[0].importaciones =
     req.body.importaciones || curriculum[0].importaciones;
-    curriculum[0].prestamos =
-    req.body.prestamos || curriculum[0].prestamos;
-    curriculum[0].otras =
-    req.body.otras || curriculum[0].otras;
-    curriculum[0].inputExtranjera =
+  curriculum[0].prestamos = req.body.prestamos || curriculum[0].prestamos;
+  curriculum[0].otras = req.body.otras || curriculum[0].otras;
+  curriculum[0].inputExtranjera =
     arrayInputExtranjera || curriculum[0].inputExtranjera;
 
-    
   try {
     const curriculumAlmacenado = await curriculum[0].save();
 
