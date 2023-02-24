@@ -2,50 +2,60 @@ import mongoose from "mongoose";
 
 const documentosSchema = mongoose.Schema(
   {
-    nombre: {
+    titulo: {
       type: String,
       trim: true,
       required: true,
     },
-    convocatoria: {
+    codigo: {
       type: String,
       trim: true,
       required: true,
     },
-    ciudad: {
+    proceso: {
       type: String,
       trim: true,
       required: true,
     },
-    salario: {
+    servicio: {
       type: String,
       trim: true,
       required: true,
     },
-    auxilio: {
+    tipo: {
       type: String,
       trim: true,
       required: true,
     },
-    bonificaciones: {
+    implementacion: {
       type: String,
       trim: true,
       required: true,
     },
-    perfil: {
+    descripcion: {
       type: String,
       trim: true,
       required: true,
     },
-    funciones: {
+    especialidad: {
       type: String,
       trim: true,
       required: true,
     },
-    estado: {
+    responsable: {
       type: String,
       trim: true,
-      default: "activo",
+      required: true,
+    },
+    fuente: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    link: {
+      type: String,
+      trim: true,
+      required: true,
     },
     creador: {
       type: mongoose.Schema.Types.ObjectId,

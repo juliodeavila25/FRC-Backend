@@ -10,9 +10,17 @@ import express from "express";
 
 const router = express.Router();
 
-router.route("/").get(checkAuth, obtenerDocumentos).post(checkAuth, nuevoDocumento);
+router
+  .route("/")
+  .get(checkAuth, obtenerDocumentos)
+  .post(checkAuth, nuevoDocumento);
 
-router.route("/:id").get(checkAuth, obtenerDocumento).put(checkAuth, editarDocumento);
+router.route("/publicos").get(obtenerDocumentos);
+
+router
+  .route("/:id")
+  .get(checkAuth, obtenerDocumento)
+  .put(checkAuth, editarDocumento);
 // .delete(checkAuth, eliminarProyecto);
 
 export default router;

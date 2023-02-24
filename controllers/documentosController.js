@@ -52,14 +52,18 @@ const editarDocumento = async (req, res) => {
   //   return res.status(401).json({ msg: error.message });
   // }
 
-  documento.nombre = req.body.nombre || documento.nombre;
-  documento.convocatoria = req.body.convocatoria || documento.convocatoria;
-  documento.ciudad = req.body.ciudad || documento.ciudad;
-  documento.salario = req.body.salario || documento.salario;
-  documento.auxilio = req.body.auxilio || documento.auxilio;
-  documento.bonificaciones = req.body.bonificaciones || documento.bonificaciones;
-  documento.perfil = req.body.perfil || documento.perfil;
-  documento.funciones = req.body.funciones || documento.funciones;
+  documento.titulo = req.body.titulo || documento.titulo;
+  documento.codigo = req.body.codigo || documento.codigo;
+  documento.proceso = req.body.proceso || documento.proceso;
+  documento.servicio = req.body.servicio || documento.servicio;
+  documento.tipo = req.body.tipo || documento.tipo;
+  documento.implementacion =
+    req.body.implementacion || documento.implementacion;
+  documento.descripcion = req.body.descripcion || documento.descripcion;
+  documento.especialidad = req.body.especialidad || documento.especialidad;
+  documento.responsable = req.body.responsable || documento.responsable;
+  documento.fuente = req.body.fuente || documento.fuente;
+  documento.link = req.body.link || documento.link;
 
   try {
     const documentoAlmacenada = await documento.save();
