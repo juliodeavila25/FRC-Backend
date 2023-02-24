@@ -41,6 +41,7 @@ const nuevoCurriculum = async (req, res) => {
     curriculum.soporteEps = req.files.soporteEps[0].filename;
     curriculum.soportePension = req.files.soportePension[0].filename;
     curriculum.rut = req.files.rut[0].filename;
+    curriculum.soporteContrato = req.files.soporteContrato[0].filename;
   }
 
   try {
@@ -53,7 +54,7 @@ const nuevoCurriculum = async (req, res) => {
 
 const obtenerCurriculum = async (req, res) => {
   const { id } = req.params;
-
+  
   const curriculum = await Curriculum.find().where("creador").equals(id);
 
   if (!curriculum) {
@@ -204,7 +205,18 @@ const editarCurriculum = async (req, res) => {
   curriculum[0].otras = req.body.otras || curriculum[0].otras;
   curriculum[0].inputExtranjera =
     arrayInputExtranjera || curriculum[0].inputExtranjera;
-
+  //Contrato
+  curriculum[0].tipoContrato = req.body.tipoContrato || curriculum[0].tipoContrato;
+  curriculum[0].fechaIngreso = req.body.fechaIngreso || curriculum[0].fechaIngreso;
+  curriculum[0].fechaFin = req.body.fechaFin || curriculum[0].fechaFin;
+  curriculum[0].empresa = req.body.empresa || curriculum[0].empresa;
+  curriculum[0].nomina = req.body.nomina || curriculum[0].nomina;
+  curriculum[0].codigoIngreso = req.body.codigoIngreso || curriculum[0].codigoIngreso;
+  curriculum[0].sueldo = req.body.sueldo || curriculum[0].sueldo;
+  curriculum[0].soporteContrato =
+    (req.files.soporteContrato && req.files.soporteContrato[0]?.filename) ||
+    curriculum[0].soporteContrato;
+  curriculum[0].cargo = req.body.cargo || curriculum[0].cargo;  
   try {
     const curriculumAlmacenado = await curriculum[0].save();
 

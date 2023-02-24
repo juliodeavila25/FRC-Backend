@@ -11,9 +11,10 @@ const obtenerNominasbyPeriodo = async (req, res) => {
    console.log(res);*/
   
   //const { identificacion, periodo } = req.body;
-  let  identificacion = "1050953869";
+  const { id } = req.params;
+  //let  identificacion = "1050953869"; 
   let  periodo = "202302";
-  const nomina = await Nominas.findOne({identificacion : identificacion}).where("periodo").equals(periodo);
+  const nomina = await Nominas.findOne({identificacion : id}).where("periodo").equals(periodo);
   if (!nomina) {
     const error = new Error("No Encontrado");
     return res.status(404).json({ msg: error.message });
