@@ -197,7 +197,109 @@ const curriculumSchema = mongoose.Schema(
         trim: true,
       },
     ],
-
+    rut: {
+      type: String,
+      required: true,
+    },
+    numeroRut: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    fechaCorte: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    ingresosAnuales: {
+      type: Number,
+      trim: true,
+      required: true,
+    },
+    egresosAnuales: {
+      type: Number,
+      trim: true,
+      required: true,
+    },
+    otrosIngresos: {
+      type: Number,
+      trim: true,
+      required: true,
+    },
+    patrimonio: {
+      type: Number,
+      trim: true,
+      required: true,
+    },
+    activos: {
+      type: Number,
+      trim: true,
+      required: true,
+    },
+    pasivos: {
+      type: Number,
+      trim: true,
+      required: true,
+    },
+    descripcionIngresos: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    poseeCuenta: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    inputCuentas: [
+      {
+        type: {},
+        required: false,
+        trim: true,
+      },
+    ],
+    operacionesExtranjera: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    exportaciones: {
+      type: String,
+      trim: true,
+      required: false,
+    },
+    transferencias: {
+      type: String,
+      trim: true,
+      required: false,
+    },
+    pagoServicios: {
+      type: String,
+      trim: true,
+      required: false,
+    },
+    importaciones: {
+      type: String,
+      trim: true,
+      required: false,
+    },
+    prestamos: {
+      type: String,
+      trim: true,
+      required: false,
+    },
+    otras: {
+      type: String,
+      trim: true,
+      required: false,
+    },
+    inputExtranjera: [
+      {
+        type: {},
+        required: false,
+        trim: true,
+      },
+    ],
     creador: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Usuario",

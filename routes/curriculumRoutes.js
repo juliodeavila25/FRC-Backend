@@ -18,6 +18,7 @@ router
       { name: "soporteExp" },
       { name: "soporteEps" },
       { name: "soportePension" },
+      { name: "rut" },
     ]),
     nuevoCurriculum
   );
@@ -31,6 +32,7 @@ router
       { name: "soporteExp" },
       { name: "soporteEps" },
       { name: "soportePension" },
+      { name: "rut" },
     ]),
     editarCurriculum
   );
