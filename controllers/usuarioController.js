@@ -18,39 +18,46 @@ const registrar = async (req, res) => {
   try {
     const usuario = new Usuario(req.body);
     usuario.userType = ["aspirante"];
-    usuario.token = generarId();
+    usuario.token = "";
+    usuario.confirmado = true;
     await usuario.save();
 
     //Enviar email cuando el usuario se registra para confirmar su cuenta
-    emailRegistro({
-      email: usuario.email,
-      nombre: usuario.nombre,
-      token: usuario.token,
-    });
+    // emailRegistro({
+    //   email: usuario.email,
+    //   nombre: usuario.nombre,
+    //   token: usuario.token,
+    // });
+    // res.json({
+    //   msg: "Usuario creado correctamente, Revisa tu correo electrónico para confirmar tu cuenta.",
+    // });
     res.json({
-      msg: "Usuario creado correctamente, Revisa tu correo electrónico para confirmar tu cuenta.",
+      msg: "Usuario creado correctamente.",
     });
     //console.log(usuario._id);
     //Comprobar si el document existe en curriculum
-  
-    const curriculum = await Curriculum.findOne({ numeroDocumento: usuario.documento });
-  if (curriculum) {
-    //curriculum.creador = usuario._id || usuario._id;
-    try {
-      const filter = { numeroDocumento: usuario.documento };
-      const update = { creador: usuario._id };
-      const curriculumAlmacenado = await Curriculum.findOneAndUpdate(filter, update);
-      console.log("1",curriculumAlmacenado);
-      //res.json(curriculumAlmacenado);
-      //console.log("2",curriculumAlmacenado);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  else{
-    const error = new Error("El usuario es nuevo");
-  }
 
+    const curriculum = await Curriculum.findOne({
+      numeroDocumento: usuario.documento,
+    });
+    if (curriculum) {
+      //curriculum.creador = usuario._id || usuario._id;
+      try {
+        const filter = { numeroDocumento: usuario.documento };
+        const update = { creador: usuario._id };
+        const curriculumAlmacenado = await Curriculum.findOneAndUpdate(
+          filter,
+          update
+        );
+        console.log("1", curriculumAlmacenado);
+        //res.json(curriculumAlmacenado);
+        //console.log("2",curriculumAlmacenado);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      const error = new Error("El usuario es nuevo");
+    }
   } catch (error) {
     console.log(error);
   }

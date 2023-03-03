@@ -272,7 +272,7 @@ const curriculumSchema = mongoose.Schema(
     },
     descripcionIngresos: {
       type: String,
-     // trim: true,
+      // trim: true,
       required: false,
     },
     poseeCuenta: {
@@ -293,32 +293,32 @@ const curriculumSchema = mongoose.Schema(
       required: false,
     },
     exportaciones: {
-      type: String,
+      type: Boolean,
       //trim: true,
       required: false,
     },
     transferencias: {
-      type: String,
+      type: Boolean,
       //trim: true,
       required: false,
     },
     pagoServicios: {
-      type: String,
+      type: Boolean,
       //trim: true,
       required: false,
     },
     importaciones: {
-      type: String,
+      type: Boolean,
       //trim: true,
       required: false,
     },
     prestamos: {
-      type: String,
+      type: Boolean,
       //trim: true,
       required: false,
     },
     otras: {
-      type: String,
+      type: Boolean,
       //trim: true,
       required: false,
     },
