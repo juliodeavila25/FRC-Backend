@@ -77,13 +77,13 @@ const curriculumSchema = mongoose.Schema(
       required: false,
     },
     fechaIngreso: {
-      type: String,
-      trim: true,
+      type: Date,
+      default: Date.now(),
       required: false,
     },
     fechaFin: {
-      type: String,
-      trim: true,
+      type: Date,
+      default: Date.now(),
       required: false,
     },
     empresa: {
@@ -236,8 +236,8 @@ const curriculumSchema = mongoose.Schema(
       required: false,
     },
     fechaCorte: {
-      type: String,
-      trim: true,
+      type: Date,
+      default: Date.now(),
       required: false,
     },
     ingresosAnuales: {
